@@ -727,10 +727,10 @@
     var html = function() {
         return {
             wrapper: '<span class="twitter-typeahead"></span>',
-            dropdown: '<span class="tt-dropdown-menu"></span>',
+            dropdown: '<div class="tt-dropdown-menu dropdown"></div>',
             dataset: '<div class="tt-dataset-%CLASS%"></div>',
-            suggestions: '<span class="tt-suggestions"></span>',
-            suggestion: '<div class="tt-suggestion"></div>'
+            suggestions: '<ul class="tt-suggestions dropdown-menu" role="menu"></ul>',
+            suggestion: '<li class="tt-suggestion" role="presentation"></li>'
         };
     }();
     var css = function() {
@@ -738,7 +738,7 @@
         var css = {
             wrapper: {
                 position: "relative",
-                display: "inline-block"
+                display: "block"
             },
             hint: {
                 position: "absolute",
@@ -1276,7 +1276,7 @@
                 suggestion: templates.suggestion || suggestionTemplate
             };
             function suggestionTemplate(context) {
-                return "<p>" + displayFn(context) + "</p>";
+                return "<a href='#' role='menuitem' tabindex='-1'> " + displayFn(context) + "</a>";
             }
         }
         function isValidName(str) {
